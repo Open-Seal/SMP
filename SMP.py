@@ -12,6 +12,11 @@ face_mesh = mp_face.FaceMesh(
 )
 mp_drawing = mp.solutions.drawing_utils
 
+# индексы для глаз и рта
+LEFT_EYE = list(range(33, 133))
+RIGHT_EYE = list(range(362, 463))
+MOUTH = list(range(78, 308))
+
 cap = cv2.VideoCapture(0)
 p_time = 0
 
@@ -34,9 +39,21 @@ while cap.isOpened():
                 mp_drawing.DrawingSpec(color=(0, 255, 0), thickness=1, circle_radius=1),
                 mp_drawing.DrawingSpec(color=(0, 255, 255), thickness=1)
             )
+
+            # нос
             nose_tip = face_landmarks.landmark[1]
             cx, cy = int(nose_tip.x * w), int(nose_tip.y * h)
             cv2.circle(frame, (cx, cy), 6, (0, 0, 255), -1)
+
+            # глаза
+            for idx in LEFT_EYE + RIGHT_EYE:
+                lx, ly = int(face_landmarks.landmark[idx].x * w), int(face_landmarks.landmark[idx].y * h)
+                cv2.circle(frame, (lx, ly), 1, (255, 0, 0), -1)
+
+            # рот
+            for idx in MOUTH:
+                mx, my = int(face_landmarks.landmark[idx].x * w), int(face_landmarks.landmark[idx].y * h)
+                cv2.circle(frame, (mx, my), 1, (0, 165, 255), -1)
 
     c_time = time.time()
     fps = int(1 / (c_time - p_time)) if p_time else 0
