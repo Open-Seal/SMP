@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import time
 
 mp_face = mp.solutions.face_mesh
 face_mesh = mp_face.FaceMesh(
@@ -12,6 +13,7 @@ face_mesh = mp_face.FaceMesh(
 mp_drawing = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture(0)
+p_time = 0
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -34,7 +36,13 @@ while cap.isOpened():
             )
             nose_tip = face_landmarks.landmark[1]
             cx, cy = int(nose_tip.x * w), int(nose_tip.y * h)
-            cv2.circle(frame, (cx, cy), 5, (0, 0, 255), -1)
+            cv2.circle(frame, (cx, cy), 6, (0, 0, 255), -1)
+
+    c_time = time.time()
+    fps = int(1 / (c_time - p_time)) if p_time else 0
+    p_time = c_time
+    cv2.putText(frame, f'FPS: {fps}', (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 
     cv2.imshow("Face Landmarks", frame)
     if cv2.waitKey(1) == 27:
