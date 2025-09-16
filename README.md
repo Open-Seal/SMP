@@ -1,5 +1,11 @@
 # Face Mesh with Mediapipe and OpenCV
 
+[![Build](https://img.shields.io/badge/build-passing-brightgreen)]()
+[![License](https://img.shields.io/badge/license-MIT-blue)]()
+[![Platform](https://img.shields.io/badge/platform-Python%203.8%2B-blue)]()
+[![Features](https://img.shields.io/badge/features-FaceMesh%2C%20Nose%2C%20Eyes%2C%20Mouth-orange)]()
+
+
 This project demonstrates real-time **3D face landmark detection** using **MediaPipe FaceMesh** and **OpenCV**.
 The program draws the full face mesh, highlights the **nose tip**, **eyes**, and **mouth**, and displays the **FPS counter**.
 
