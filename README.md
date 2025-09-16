@@ -1,29 +1,31 @@
 # Face Mesh with Mediapipe and OpenCV
 
-This project demonstrates the use of **MediaPipe FaceMesh** for capturing and visualizing 3D face landmarks in real-time with **OpenCV**.  
-The program renders the face mesh and highlights the nose tip.
+This project demonstrates the use of **MediaPipe FaceMesh** with **OpenCV** for real-time face landmark detection.
+The program draws the full face mesh, highlights the **nose tip**, and shows the **FPS counter**.
 
 ---
 
 ## Features
-- Capture video from a webcam.
-- Draw a face mesh (**468 landmarks**).
-- Highlight the nose tip with a red circle.
-- Mirror the image (like a real mirror).
-- Exit with the `Esc` key.
+
+* Capture live video from a webcam.
+* Render the **468-point face mesh**.
+* Highlight the **nose tip** with a red circle.
+* Show the **FPS** in the top-left corner.
+* Mirror the video feed (natural mirror effect).
+* Close the program with the `Esc` key.
 
 ---
 
 ## Installation
 
-1. Clone the repository or save the code locally.
-2. Install the dependencies:
+1. Clone this repository or save the script locally.
+2. Install the required packages:
 
 ```bash
 pip install -r requirements.txt
-````
+```
 
-The `requirements.txt` contains:
+### `requirements.txt`
 
 ```
 opencv-python
@@ -35,22 +37,19 @@ numpy
 
 ## Run
 
-Run the script with:
+Launch the script with:
 
 ```bash
 python SMP.py
 ```
 
-After launching, a window with the webcam feed will appear showing the drawn face landmarks.
-Press `Esc` to close the program.
+Once started, the webcam window will open showing:
 
----
+* The face mesh overlay
+* The red nose tip marker
+* The FPS counter
 
-## Requirements
-
-* Python 3.8+
-* Webcam
-* OpenCV and MediaPipe support
+Press `Esc` to exit.
 
 ---
 
@@ -58,5 +57,3 @@ Press `Esc` to close the program.
 
 * [MediaPipe FaceMesh Documentation](https://developers.google.com/mediapipe/solutions/vision/face_mesh)
 * [OpenCV Documentation](https://docs.opencv.org/)
-
----
